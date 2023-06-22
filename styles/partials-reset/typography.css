@@ -1,0 +1,60 @@
+/*
+  Typography Features
+  Typography uses the default system font
+*/
+html {
+  font-family:
+    system-ui,                     /* Use system-ui font */
+    /* macOS 10.11-10.12 */ -apple-system,
+    /* Windows 6+ */ Segoe UI,
+    /* Android 4+ */ Roboto,
+    /* Ubuntu 10.10+ */ Ubuntu,
+    /* Gnome 3+ */ Cantarell,
+    /* KDE Plasma 5+ */ Noto Sans,
+    /* fallback */ sans-serif,
+    /* macOS emoji */ "Apple Color Emoji",
+    /* Windows emoji */ "Segoe UI Emoji",
+    /* Windows emoji */ "Segoe UI Symbol",
+    /* Linux emoji */ "Noto Color Emoji";            /* Set font family */
+}
+
+/* Pre-formatted and code-formatted text uses the monospace system font */
+code,
+kbd,
+pre,
+samp {
+  font-family:
+    /* macOS 10.10+ */ Menlo, /* Windows 6+ */ Consolas,
+    /* Android 4+ */ Roboto Mono, /* Ubuntu 10.10+ */ Ubuntu Monospace,
+    /* KDE Plasma 5+ */ Noto Mono, /* KDE Plasma 4+ */ Oxygen Mono,
+    /* Linux/OpenOffice fallback */ Liberation Mono, /* fallback */ monospace;
+}
+
+/*
+  Typographic tweaks!
+  Add accessible line-height
+*/
+body,
+p {
+  line-height: 1.5;  /* Set line height for body and paragraph elements */
+  -webkit-font-smoothing: antialiased;  /* Enable antialiased font smoothing for WebKit browsers */
+}
+
+/* Reset font size and weight for headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;      /* Set the font size to 100% */
+  font-weight: normal;  /* Set the font weight to normal */
+
+  /*
+    Avoid text overflows
+  */
+  &,
+  p {
+    overflow-wrap: break-word;   /* Break words to prevent overflow */
+  }
+}

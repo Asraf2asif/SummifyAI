@@ -1,0 +1,23 @@
+/*
+  Pseudo-elements inherit text decoration and vertical alignment
+*/
+::before,
+::after {
+  text-decoration: inherit;  /* Inherit text decoration from parent element */
+  vertical-align: inherit;   /* Inherit vertical alignment from parent element */
+}
+
+/*
+  Allow percentage-based heights in the application
+*/
+html,
+body {
+  height: 100%;  /* Set height to 100% for HTML and body elements */
+}
+
+html {
+  /* Cursors only change to hint non-obvious interfaces */
+  cursor: default;  /* Set cursor to default for HTML element */
+  /* Words break to prevent overflow */
+  /* word-break: break-all;*/
+}

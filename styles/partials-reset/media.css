@@ -1,0 +1,33 @@
+/*
+  Improve media defaults
+*/
+img,
+video,
+canvas,
+svg {
+
+  &,
+  picture {
+    display: block;              /* Display as block element */
+
+    &,
+    iframe {
+      height: auto;                /* Set height to auto */
+      max-width: 100%;             /* Set maximum width to 100% */
+    }
+  }
+
+  &,
+  iframe,
+  audio {
+    vertical-align: middle;        /* Media elements align to the text center of other content */
+  }
+}
+
+/* SVGs fallback to the current text color */
+svg:not([fill]) {
+  fill: currentColor;          /* Set fill color to current text color */
+}
+
+
+

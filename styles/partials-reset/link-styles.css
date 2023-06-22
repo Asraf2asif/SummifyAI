@@ -1,0 +1,8 @@
+/* Reset styles for links */
+a {
+  margin: 0;                   /* Reset margin for links */
+  padding: 0;                  /* Reset padding for links */
+  font-size: 100%;             /* Set the font size to 100% */
+  vertical-align: baseline;    /* Align vertically to the baseline */
+  background: transparent;     /* Set the background to transparent */
+}

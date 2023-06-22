@@ -1,0 +1,109 @@
+/* Style the setup inner container */
+.setup-inner {
+  display: flex;                                        /* Display the setup inner container as a flex container */
+  justify-content: space-around;                        /* Distribute the items evenly along the horizontal axis */
+  padding: 1.5em 0.5em;                                 /* Add padding to the setup inner container */
+  min-height: 234px;                                    /* Set the minimum height of the setup inner container */
+
+  & > img {
+    width: 40%;                                          /* Set the width of the image */
+    filter: drop-shadow(3px 2px 3px var(--medium-dark)); /* Add a drop shadow to the image */
+    align-self: center;                                  /* Center align the image vertically */
+  }
+}
+
+/* Style the setup input container */
+.setup-input-container {
+  min-height: 74px;                                     /* Set the minimum height of the setup input container */
+
+  /* Apply different styling for larger mobile devices and above */
+  @media (width >= 380px) {
+    padding-top: 0;                                     /* Remove top padding for larger devices */
+  }
+}
+
+/* Style the speech bubble for AI response */
+.speech-bubble-ai {
+  max-width: 55%;                                       /* Set the maximum width of the speech bubble */
+  min-width: 200px;                                     /* Set the minimum width of the speech bubble */
+  min-height: 120px;                                    /* Set the minimum height of the speech bubble */
+  border-radius: var(--border-rad-lg);                  /* Set the border radius using a CSS variable */
+  position: relative;                                   /* Set the position to relative */
+  margin: 0;                                            /* Remove margin */
+  border: 3px solid var(--medium-dark);                 /* Add a border to the speech bubble */
+  background-color: var(--white);                       /* Set the background color using a CSS variable */
+  display: flex;                                        /* Display the speech bubble as a flex container */
+  align-self: flex-start;                               /* Align the speech bubble to the left */
+  align-items: center;                                  /* Center align the items vertically within the speech bubble */
+
+  &::before,
+  &:after {
+    content: "";                                        /* Add content for the pseudo-elements */
+    position: absolute;                                 /* Set the position to absolute */
+  }
+
+  &::before {
+    border-left: 9px solid transparent;                 /* Create the triangular shape for the speech bubble */
+    border-right: 9px solid var(--medium-dark);
+    border-top: 9px solid var(--medium-dark);
+    border-bottom: 9px solid transparent;
+    left: -21px;                                        /* Position the triangle on the left side */
+    top: 64px;                                          /* Adjust the vertical position of the triangle */
+
+    /* Apply different styling for larger mobile devices and above */
+    @media (width >= 380px) {
+      top: 92px;                                        /* Adjust the vertical position of the triangle for larger devices */
+    }
+  }
+
+  &:after {
+    border-left: 7px solid transparent;                 /* Create the inner triangle for the speech bubble */
+    border-right: 7px solid var(--white);
+    border-top: 7px solid var(--white);
+    border-bottom: 7px solid transparent;
+    left: -11px;                                        /* Position the inner triangle on the left side */
+    top: 68px;                                          /* Adjust the vertical position of the inner triangle */
+
+    /* Apply different styling for larger mobile devices and above */
+    @media (width >= 380px) {
+      top: 96px;                                        /* Adjust the vertical position of the inner triangle for larger devices */
+    }
+  }
+
+  /* Style the text within the speech bubble */
+  & > p {
+    padding: 15px;                                      /* Add padding to the text */
+    color: var(--dark);                                 /* Set the text color using a CSS variable */
+    font-size: 85%;                                    /* Set the font size for the text */
+
+    /* Apply different styling for larger mobile devices and above */
+    @media (width >= 380px) {
+      font-size: 100%;                                  /* Set the font size to 100% for larger devices */
+    }
+  }
+}
+
+textarea {
+  background-color: var(--light-grey);                  /* Set the background color using a CSS variable */
+  padding: 0.8em;                                       /* Add padding to the textarea */
+  border: none;                                         /* Remove the border */
+  @util border-left-radius(var(--border-rad-lg));       /* Apply border-left-radius using a mixin */
+  @util border-right-radius(0);                         /* Apply border-right-radius using a mixin */
+  width: 100%;                                          /* Set the width to 100% */
+  resize: none;                                         /* Disable textarea resizing */
+  min-height: 40px;                                     /* Set the minimum height of the textarea */
+  /* box-sizing: border-box; */                         /* Uncomment this line to include the border in the box-sizing calculation */
+  font-family: "Poppins", sans-serif;                   /* Set the font family for the textarea */
+
+  &::placeholder {
+    color: var(--medium-dark);                          /* Set the placeholder text color using a CSS variable */
+    font-size: 88%;                                     /* Set the font size for the placeholder text */
+    opacity: 0.8;                                       /* Set the opacity for the placeholder text */
+
+    /* Apply different styling for larger mobile devices and above */
+    @media (width >= 380px) {
+      font-size: 100%;                                  /* Set the font size to 100% for larger devices */
+      opacity: 0.8;                                     /* Set the opacity for the placeholder text */
+    }
+  }
+}

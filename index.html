@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Concept2Screen | Creative Concepts Brought to Life</title>
+		<!-- Favicon -->
+		<link rel="icon" href="./images/logo-movie.png" type="image/x-icon" />
+		<!-- <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
+		<!-- Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@700&family=Poppins:wght@400;700&display=swap"
+			rel="stylesheet"
+		/>
+		<!-- Stylesheets -->
+		<link rel="stylesheet" href="styles/index.css" />
+	</head>
+	<body>
+		<!-- Header -->
+		<header>
+			<img src="./images/logo-movie.png" alt="Concept2Screen logo" />
+			<a href="/"><span>Concept2</span>Screen</a>
+		</header>
+
+		<!-- Main Content -->
+		<main>
+			<!-- The Setup -->
+			<section id="setup-container">
+				<div class="setup-inner">
+					<img src="/images/movieboss.png" alt="movieboss avatar image" />
+					<div class="speech-bubble-ai" id="speech-bubble-ai">
+						<p id="movie-boss-text">
+							Welcome to Concept2Screen, I will help you with your movie
+							concept.
+						</p>
+					</div>
+				</div>
+				<!-- The Input -->
+				<div class="input-container" id="input-container">
+					<p id="input-text"></p>
+				</div>
+				<!-- The Output -->
+				<div class="output-container" id="output-container">
+					<div id="output-img-container" class="output-img-container"></div>
+					<h1 id="output-title"></h1>
+					<h2 id="output-stars"></h2>
+					<p id="output-text"></p>
+				</div>
+				<div
+					class="setup-inner setup-input-container"
+					id="setup-input-container"
+				>
+					<textarea
+						id="setup-textarea"
+						placeholder="An evil genius wants to take over the world using AI."
+					></textarea>
+					<button
+						type="submit"
+						class="send-btn disabled"
+						id="send-btn"
+						aria-label="send"
+					>
+						<img src="images/send-btn-icon.png" alt="send" />
+					</button>
+					<img
+						src="images/loading.svg"
+						class="loading"
+						id="loading"
+						style="display: none"
+						alt="loading image"
+					/>
+				</div>
+			</section>
+		</main>
+
+		<!-- Footer -->
+		<footer>
+			<p>
+				&copy; <span id="currentYear"></span> Concept2Screen. Created by
+				<a href="https://github.com/Asraf2asif" target="_blank">asraf2asif</a>.
+			</p>
+		</footer>
+
+		<!-- JavaScript -->
+		<script type="module" src="index.js"></script>
+	</body>
+</html>

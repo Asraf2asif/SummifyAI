@@ -1,0 +1,102 @@
+/* Textareas only resize vertically by default */
+textarea {
+  resize: vertical;            /* Resize textarea only vertically */
+}
+
+/* Single taps are dispatched immediately on clickable elements */
+a,
+area,
+button,
+input,
+label,
+select,
+summary,
+textarea,
+[tabindex] {
+  -ms-touch-action: manipulation;  /* Set touch action to manipulation for better touch response */
+  touch-action: manipulation;      /* Set touch action to manipulation for better touch response */
+}
+
+/* ARIA roles include visual cursor hints */
+[aria-busy="true"] {
+  cursor: progress;              /* Set cursor to progress for elements with aria-busy="true" */
+}
+
+[aria-controls] {
+  cursor: pointer;               /* Set cursor to pointer for elements with aria-controls attribute */
+}
+
+[aria-disabled="true"],
+[disabled] {
+  cursor: default;               /* Set cursor to default for elements with aria-disabled="true" or disabled attribute */
+}
+
+/* Visually hidden content remains accessible */
+[aria-hidden="false"][hidden] {
+  display: initial;              /* Set display to initial for elements with aria-hidden="false" and hidden attribute */
+  
+  &:not(:focus) {
+    clip: rect(0, 0, 0, 0);        /* Clip the element to hide it visually */
+    position: absolute;            /* Set position to absolute for elements with aria-hidden="false" and hidden attribute, but not focused */
+  }
+}
+
+/*
+  Forms Features
+  Form controls appear visually consistent and restyle consistently
+*/
+button,
+input,
+select,
+textarea {
+  background-color: transparent;   /* Set transparent background color */
+  border: 1px solid WindowFrame;   /* Set border style */
+  color: inherit;                  /* Inherit text color */
+  font: inherit;                   /* Inherit font properties */
+  letter-spacing: inherit;         /* Inherit letter spacing */
+  padding: 0.25em 0.375em;         /* Set padding */
+}
+
+input,
+select {
+  vertical-align: middle;      /* Align vertically in middle */
+}
+
+/*
+  Assets Features
+  Assets use a comfortable measure in all browsers
+*/
+input,
+select,
+textarea {
+  height: auto;                /* Set height to auto */
+  max-width: 100%;             /* Set maximum width to 100% */
+}
+
+[type="color"],
+[type="range"] {
+  border-width: 0;                 /* Remove border */
+  padding: 0;                      /* Remove padding */
+}
+
+/* Expandable select controls appear visually consistent */
+select {
+  -moz-appearance: none;                            /* Remove default appearance in Firefox */
+  -webkit-appearance: none;                         /* Remove default appearance in WebKit browsers */
+  background: no-repeat right center / 1em;          /* Set background image for select */
+  border-radius: 0;                                 /* Remove border radius */
+  padding-right: 1em;                               /* Add right padding */
+}
+
+select:not([multiple]):not([size]) {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='4'%3E%3Cpath d='M4 0h6L7 4'/%3E%3C/svg%3E");   /* Set background image for single-select dropdown */
+}
+
+::-ms-expand {
+  display: none;                                    /* Hide expand arrow in Internet Explorer */
+}
+
+/* Placeholders appear visually consistent in Internet Explorer */
+:-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.54);                       /* Set placeholder text color for Internet Explorer */
+}

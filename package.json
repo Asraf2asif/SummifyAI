@@ -1,0 +1,33 @@
+{
+  "name": "project",
+  "dependencies": {
+    "openai": "^3.2.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-legacy": "^4.0.4",
+    "autoprefixer": "^10.4.14",
+    "cssnano": "^6.0.1",
+    "postcss-color-rgb": "^2.0.0",
+    "postcss-color-rgba-fallback": "^4.0.0",
+    "postcss-custom-properties": "^13.2.0",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-import": "^15.1.0",
+    "postcss-media-minmax": "^5.0.0",
+    "postcss-nested": "^6.0.1",
+    "postcss-nesting": "^11.3.0",
+    "postcss-pseudoelements": "^5.0.0",
+    "postcss-selector-matches": "^4.0.0",
+    "postcss-unroot": "^1.0.2",
+    "postcss-utilities": "^0.8.4",
+    "vite": "latest"
+  },
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "browserslist": [
+    "cover 99.5%"
+  ]
+}

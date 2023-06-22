@@ -1,0 +1,7 @@
+.input-container{
+  background-color: var(--light-grey);                  /* Set the background color using a CSS variable */
+  padding: 20px 15px;
+  border-radius: 5px;
+  display: none;
+  margin-right: 30px;
+}

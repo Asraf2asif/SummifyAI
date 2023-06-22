@@ -1,0 +1,10 @@
+/* Define global color variables */
+:root {
+  --white: #ffffff;       /* White color */
+  --light: #f5f5f5;       /* Light gray color */
+  --light-grey: #e8e8e8;  /* Light gray color */
+  --pink: #ff176b;        /* Pink color */
+  --medium-dark: #777;    /* Medium dark gray color */
+  --dark: #242526;        /* Dark gray color */
+  --border-rad-lg: 15px;  /* Large border radius value */
+}

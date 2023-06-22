@@ -1,0 +1,51 @@
+button {
+  border: none;                                   /* Remove the button border */
+  background: var(--pink);                        /* Set the background color using a CSS variable */
+  cursor: pointer;                                /* Set the cursor to pointer */
+
+  &:hover {
+    background-color: var(--dark);                /* Change the background color on hover */
+  }
+}
+
+.send-btn {
+  @util border-right-radius(var(--border-rad-lg)); /* Apply border-right-radius using a mixin */
+  min-width: 50px;                                /* Set the minimum width of the button */
+
+  &:hover {
+    background-color: #ccc;                       /* Change the background color on hover */
+  }
+
+  &.disabled {
+    background-color: #ccc;                       /* Set the background color for disabled state */
+    color: #999;                                  /* Set the text color for disabled state */
+    cursor: not-allowed;                          /* Set the cursor to not-allowed for disabled state */
+
+    &:hover {
+      background-color: #ccc;                     /* Change the background color on hover for disabled state */
+    }
+  }
+
+  & > img {
+    width: 1.6em;                                 /* Set the width of the image */
+    margin: 0 auto;                               /* Center align the image horizontally */
+  }
+}
+
+.view-pitch-btn {
+  color: var(--light);                            /* Set the text color using a CSS variable */
+  border-radius: var(--border-rad-lg);            /* Set the border radius using a CSS variable */
+  padding: 1em;                                   /* Add padding to the button */
+  margin: 0.4em auto;                             /* Set the margin for the button */
+  display: block;                                 /* Display the button as a block element */
+  font-size: 1.2em;                               /* Set the font size for the button */
+
+  &:hover {
+    box-shadow: 1px 1px 5px 1px var(--medium-dark); /* Add box shadow on hover */
+  }
+}
+
+img.loading {
+  max-width: 40px;                                /* Set the maximum width of the image */
+  filter: none;                                   /* Remove any image filters */
+}

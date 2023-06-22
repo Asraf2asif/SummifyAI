@@ -1,0 +1,21 @@
+/*
+  Use a more-intuitive box-sizing model.
+*/
+html {
+  box-sizing: border-box;  /* Set box-sizing to border-box for HTML element */
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;    /* Inherit box-sizing from parent element */
+  /* Backgrounds do not repeat by default */
+  background-repeat: no-repeat;  /* Prevent background from repeating */
+}
+
+/*
+  Remove default margin
+*/
+* {
+  margin: 0;  /* Reset margin for all elements */
+}

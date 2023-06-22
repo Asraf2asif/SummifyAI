@@ -1,0 +1,38 @@
+/* Style the header section */
+header {
+  background-color: var(--dark);                     /* Set the background color using a CSS variable */
+  display: flex;                                     /* Display the header as a flex container */
+  justify-content: center;                           /* Center align the items horizontally */
+  align-items: center;                               /* Center align the items vertically */
+  gap: 0.3em;                                        /* Set the gap between items */
+
+  & > img {
+    height: 26px;                                    /* Set the height of the image */
+  }
+
+  & > a {
+    color: var(--light);                             /* Set the text color using a CSS variable */
+    font-size: 1.5em;                                /* Set the font size for links */
+    text-decoration: none;                           /* Remove the underline from links */
+    padding: 1em 0;                                  /* Add padding to links */
+  }
+
+  & span {
+    font-weight: 700;                                /* Set the font weight for spans */
+  }
+}
+
+/* Style the main section */
+main {
+  padding: 0 1em;                                    /* Add padding to the main section */
+}
+
+/* Style sections within the main section */
+section {
+  margin: 0 auto;                                    /* Center align the sections horizontally */
+  background-color: var(--light);                    /* Set the background color using a CSS variable */
+  border-radius: var(--border-rad-lg);               /* Set the border radius using a CSS variable */
+  padding: 0.25em 1em;                               /* Add padding to the sections */
+  box-shadow: 0px 1px 18px 3px var(--dark);          /* Add a box shadow to the sections */
+  max-width: 420px;                                  /* Set the maximum width of the sections */
+}

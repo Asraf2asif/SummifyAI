@@ -1,0 +1,9 @@
+@import "partials-reset/box-sizing-and-margins.css";
+@import "partials-reset/pseudo-elements-and-heights.css";
+@import "partials-reset/reset-styles-and-display-properties.css";
+@import "partials-reset/typography.css";
+@import "partials-reset/list-styles-and-quotes.css";
+@import "partials-reset/link-styles.css";
+@import "partials-reset/media.css";
+@import "partials-reset/form-controls.css";
+@import "partials-reset/reduce-motion.css";

@@ -1,0 +1,18 @@
+/*
+  Reduce Motion Features
+  Animations, scrolling effects, and transitions are reduced in all browsers
+*/
+/* Disable animations and transitions for users with reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-delay: -1ms !important;           /* Disable animation delay */
+    animation-duration: 1ms !important;         /* Set animation duration to minimum */
+    animation-iteration-count: 1 !important;    /* Set animation iteration count to 1 */
+    background-attachment: initial !important;  /* Set background attachment to initial */
+    scroll-behavior: auto !important;           /* Set scroll behavior to auto */
+    transition-delay: 0s !important;            /* Set transition delay to 0s */
+    transition-duration: 0s !important;         /* Set transition duration to 0s */
+  }
+}

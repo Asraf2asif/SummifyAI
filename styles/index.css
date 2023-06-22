@@ -1,0 +1,54 @@
+/* =================
+      Reset styles 
+     ================= */
+
+@import "reset.css";
+
+/* =================
+      Main styles 
+     ================= */
+
+@import "partials-index/variables.css";
+@import "partials-index/basic.css";
+
+/* =================
+      Typography 
+     ================= */
+
+@import "partials-index/typography.css";
+
+/* =================
+      Sections 
+     ================= */
+
+@import "partials-index/sections.css";
+
+/* =================
+      Setup 
+     ================= */
+
+@import "partials-index/setup.css";
+
+/* =================
+      Buttons & SVG 
+     ================= */
+
+@import "partials-index/buttons.css";
+
+/* =================
+      Input 
+     ================= */
+
+@import "partials-index/input.css";
+
+/* =================
+      Output 
+     ================= */
+
+@import "partials-index/output.css";
+
+/* =================
+      Footer 
+     ================= */
+
+@import "partials-index/footer.css";
