@@ -1,7 +1,8 @@
 
 /* Style sections within the main section */
 .chat-container {
-  padding: 15px;
+  padding-bottom: 25px;
+
   & .chat-message {
     margin: 15px 0;
 
@@ -11,6 +12,7 @@
         padding: 10px 15px;
         font-size: .84em;
         transition: width 0.2s ease-in-out 0s;
+        min-width: 100px;
       }
     }
 
@@ -21,15 +23,25 @@
       & img {
         width: 23px;
         height: 23px;
-        border-radius: 50%;
-        border: 1px solid #919cab;
         margin-right: 8px;
+        margin-top: 8px;
+      }
+
+      & .logo {
+        border-radius: 50%;
+        border: 1px solid rgb(113 123 143 / 70%);
+      }
+
+      & .loading {
+        margin-left: 8px;
+        margin-bottom: 0;
       }
 
       & p { 
         border-radius: 5px 20px 20px;
         background-color: rgb(241, 245, 249);
         color: rgb(0, 0, 0);
+        border: 1px solid rgb(113 123 143 / 37%);
       }
     }
 
@@ -50,8 +62,79 @@
       }
     }
   }
+
 }
 
+.chat-input {
+  margin: 0 auto;
+    max-width: 400px;
+    position: relative;
+    min-width: 90%;
+
+  & textarea {
+    min-height: 30px;
+    resize: none;
+    background-color: var(--light);                  /* Set the background color using a CSS variable */
+    padding: 10px 13px;                                       /* Add padding to the textarea */
+    padding-right: 26px;
+    border: 1px solid rgb(113 123 143 / 50%);
+    border-radius: 5px;                                      
+    width: 100%;                                          /* Set the width to 100% */
+    font-size: .9em;
+    height: 40px; /* Updated initial height to 40px */
+    min-height: 40px; /* Adjusted initial height */
+    overflow: hidden; /* Prevents text overflow */
+    transition: all 0.9s ease-out;
+
+    &::placeholder {
+      color: var(--medium-dark);                          /* Set the placeholder text color using a CSS variable */
+      font-size: 88%;                                     /* Set the font size for the placeholder text */
+      opacity: 0.8;                                       /* Set the opacity for the placeholder text */
+
+      /* Apply different styling for larger mobile devices and above */
+      @media (width >= 380px) {
+        font-size: 90%;                                  /* Set the font size to 100% for larger devices */
+        opacity: 0.8;                                     /* Set the opacity for the placeholder text */
+      }
+    }
+
+    &:focus {
+      outline: none;
+      border: none;
+      box-shadow: 0 0 3px #a868c5;
+    }
+    
+    &:disabled {
+      background-color: var(--light-grey);
+      cursor: not-allowed;
+    }
+  }
+  
+  button {
+    position: absolute;
+    bottom: 11px;
+    right: 5px;
+    font-size: .9em;
+    color: #a868c5;
+    border: none;                                   /* Remove the button border */
+    cursor: pointer;                                /* Set the cursor to pointer */
+
+    &:hover {
+      color: #552a69;                /* Change the background color on hover */
+    }
+
+    &:disabled {
+      color: #999;                                  /* Set the text color for disabled state */
+      cursor: not-allowed;
+    }
+  }
+}
+
+img.loading {
+  max-width: 40px;                                /* Set the maximum width of the image */
+  filter: none;                                   /* Remove any image filters */
+  margin: 0 auto;
+}
 
 /* Style the setup inner container */
 .setup-inner {
@@ -103,28 +186,4 @@
   }
 }
 
-textarea {
-  background-color: var(--light-grey);                  /* Set the background color using a CSS variable */
-  padding: 10px 20px;                                       /* Add padding to the textarea */
-  border: none;                                         /* Remove the border */
-  @util border-left-radius(5000px);       /* Apply border-left-radius using a mixin */
-  @util border-right-radius(0);                         /* Apply border-right-radius using a mixin */
-  width: 100%;                                          /* Set the width to 100% */
-  resize: none;                                         /* Disable textarea resizing */
-  height: 50px;                                     /* Set the minimum height of the textarea */
-  /* box-sizing: border-box; */                         /* Uncomment this line to include the border in the box-sizing calculation */
-  font-family: "Poppins", sans-serif;                   /* Set the font family for the textarea */
-  font-size: .9em;
 
-  &::placeholder {
-    color: var(--medium-dark);                          /* Set the placeholder text color using a CSS variable */
-    font-size: 88%;                                     /* Set the font size for the placeholder text */
-    opacity: 0.8;                                       /* Set the opacity for the placeholder text */
-
-    /* Apply different styling for larger mobile devices and above */
-    @media (width >= 380px) {
-      font-size: 100%;                                  /* Set the font size to 100% for larger devices */
-      opacity: 0.8;                                     /* Set the opacity for the placeholder text */
-    }
-  }
-}

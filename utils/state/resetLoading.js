@@ -2,7 +2,7 @@ import { bulkInlineDisplay } from "../bulk/bulkInlineDisplay";
 import { bulkEnableElem } from "../bulk/bulkEnableElem";
 
 const loadingImg = document.getElementById("loading"); // Loading image
-const setupTextarea = document.getElementById("setup-textarea"); // Textarea input
+const inputBox = document.getElementById("input-box"); // Textarea input
 const sendBtn = document.getElementById("send-btn"); // Send button
 
 /**
@@ -13,11 +13,11 @@ export function resetLoading() {
   loadingImg.style.display = "none";
 
   // Show the input and button elements
-  bulkInlineDisplay(setupTextarea, sendBtn);
+  bulkInlineDisplay(inputBox, sendBtn);
 
   // Enable the input and button elements
-  bulkEnableElem(setupTextarea, sendBtn);
+  bulkEnableElem(inputBox, sendBtn);
 
   // Select the input element
-  setupTextarea.select();
+  inputBox.select();
 }

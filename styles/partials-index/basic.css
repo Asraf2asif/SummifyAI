@@ -17,11 +17,15 @@ body {
   flex-direction: column;                                  /* Arrange items vertically within the body */
   position: relative;                                      /* Set the position to relative */
   padding: 15px;
-  max-width: 650px;
-/*  justify-content: center;*/
+  max-width: 600px;
   margin: 15px auto;
 }
 
 main {
-    background-color: var(--white);                    /* Set the background color using a CSS variable */  
+  background-color: var(--white);                    /* Set the background color using a CSS variable */  
+  padding: 15px;
+   padding-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }

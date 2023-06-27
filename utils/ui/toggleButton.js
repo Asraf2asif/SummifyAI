@@ -14,14 +14,24 @@ export function toggleButton(input, btn) {
     // Validate the input parameters
     validateElements(input, btn);
 
-    // Check if the input value is empty or contains only whitespace
-    if (input.value.trim() === "") {
-      btn.disabled = true; // Disable the send button
-      btn.classList.add("disabled"); // Add disabled class to the send button
-    } else {
-      btn.disabled = false; // Enable the send button
-      btn.classList.remove("disabled"); // Remove disabled class from the send button
+    
+    btn.disabled = input.value.trim() === '';
+
+    if(input.value.trim() !== ''){
+      input.style.height = 'auto'; // Reset input height
+      
+      if(input.scrollHeight<500){
+        input.style.height = `${input.scrollHeight}px`; // Adjust input height based on content
+        input.style.overflow = "hidden";
+      }else{
+        input.style.height = "500px"; // Adjust input height based on content
+        input.style.overflow = "auto"; 
+      }
+    }else{
+      input.style.height = '40px'; // Reset input height
+      input.style.overflow = "hidden";
     }
+
   } catch (error) {
     // Handle errors
     handleError(error);

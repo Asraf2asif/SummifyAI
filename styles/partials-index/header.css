@@ -6,17 +6,28 @@ header {
   color: var(--light);                             /* Set the text color using a CSS variable */
   font-size: 1.2em;  
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 
   & img {
     height: 26px;                                    /* Set the height of the image */
     padding-right: 8px;
   }
 
-  & a {
-   text-decoration: none;                           /* Remove the underline from links */
+  & p {
+   display: flex;
+    flex-wrap: wrap;
+
+    & a {
+     text-decoration: none;                           /* Remove the underline from links */
+     padding-right: 5px;
+    }
   }
 
+  & a {
+     flex-shrink: 0;
+    flex-grow: 0;
+    }
+    
   & span {
     font-weight: 700;                                /* Set the font weight for spans */
     color: #BA68C8;

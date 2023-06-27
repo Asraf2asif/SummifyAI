@@ -25,7 +25,7 @@
 		<!-- Header -->
 		<header>
 			<a href="/">
-				<img src="./images/logo-dark.png" alt="SummifyAI logo" />
+				<img src="./images/logo-dark.png" alt="SummifyAI logo"/>
 			</a>
 			<p>
 				<a href="/"><span>Summify </span></a>
@@ -35,29 +35,26 @@
 
 		<main>
 			<div class="chat-container">
-				<div class="chat-message chatbot" id="init-chat-msg">
+				<div class="chat-message chatbot">
 					<img
 						src="./images/logo-gray.png"
-						alt="SummifyAI logo"
+						alt="SummifyAI logo" class="logo"
 					/>
-					<p>Welcome.</p>
-				</div>
-
-				<div class="chat-message user">
-					<p>This is a user message.</p>
+					<p id="init-chat-msg">Welcome.</p>
 				</div>
 			</div>
 
 			<div class="chat-input">
 				<textarea
-					id="user-input"
-					placeholder="Enter article, blog post, or document for summarization..."
+					id="input-box"
+					placeholder="Enter your text..."
 				></textarea>
 				<button
 					type="submit"
-					class="send-btn disabled"
+					class="send-btn"
 					id="send-btn"
 					aria-label="Send"
+					disabled
 				>
 					<i class="fas fa-paper-plane"></i>
 				</button>

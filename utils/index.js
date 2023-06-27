@@ -10,8 +10,7 @@ import { loadingState } from "./state/loadingState";
 import { onloadSelectInput } from "./ui/onloadSelectInput";
 import { resetLoading } from "./state/resetLoading";
 import { toggleButton } from "./ui/toggleButton";
-import { synopsisShow } from "./message/synopsisShow";
-import { waitMsgShow } from "./message/waitMsgShow";
+import { summaryShow } from "./message/summaryShow";
 import { handleSendBtnClick } from "./interaction/handleSendBtnClick";
 import { handleTextareaKeydown } from "./interaction/handleTextareaKeydown";
 
@@ -29,8 +28,7 @@ export {
   onloadSelectInput,
   resetLoading,
   toggleButton,
-  synopsisShow,
-  waitMsgShow,
+  summaryShow,
   handleSendBtnClick,
   handleTextareaKeydown,
 };

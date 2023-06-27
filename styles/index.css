@@ -24,16 +24,17 @@
 @import "partials-index/header.css";
 
 /* =================
+      Loading Animation 
+     ================= */
+
+@import "partials-index/loading.css";
+
+/* =================
       Setup 
      ================= */
 
 @import "partials-index/chat.css";
 
-/* =================
-      Buttons & SVG 
-     ================= */
-
-@import "partials-index/buttons.css";
 
 /* =================
       Input 
@@ -52,3 +53,4 @@
      ================= */
 
 @import "partials-index/footer.css";
+
