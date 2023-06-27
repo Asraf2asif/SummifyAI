@@ -32,10 +32,10 @@ export function fewShotPromptGen(dataArray, resType, outline) {
       }
 
       const resTypeSample = dataArray[i][resType];
-      promptStr += `###\noutline: ${outlineSample}\n${resType}: ${resTypeSample}\n`;
+      promptStr += `###\narticle: ${outlineSample}\n${resType}: ${resTypeSample}\n`;
     }
 
-    promptStr += `###\noutline: ${outline}\n${resType}: `;
+    promptStr += `###\narticle: ${outline}\n${resType}: `;
 
     return promptStr;
   } catch (error) {

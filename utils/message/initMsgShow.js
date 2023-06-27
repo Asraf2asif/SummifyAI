@@ -6,8 +6,7 @@ import { typeTextByChar } from "../ui/typeTextByChar";
 const movieBossText = document.getElementById("movie-boss-text"); // Output text container
 
 const defaultMsg =
-  "Transform Your Ideas into Blockbusters with a Single Movie Concept." +
-  " Get a Movie Title, Synopsis, Poster, and Cast, All Powered by AI!";
+  "Please provide the content you would like me to summarize using SummifyAI professionally and concisely.";
 
 export function initMsgShow() {
   loadingState();

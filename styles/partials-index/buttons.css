@@ -9,20 +9,20 @@ button {
 }
 
 .send-btn {
-  @util border-right-radius(var(--border-rad-lg)); /* Apply border-right-radius using a mixin */
+  @util border-right-radius(5000px); /* Apply border-right-radius using a mixin */
   min-width: 50px;                                /* Set the minimum width of the button */
+  height: 50px;
 
   &:hover {
     background-color: #ccc;                       /* Change the background color on hover */
   }
 
   &.disabled {
-    background-color: #ccc;                       /* Set the background color for disabled state */
     color: #999;                                  /* Set the text color for disabled state */
     cursor: not-allowed;                          /* Set the cursor to not-allowed for disabled state */
 
-    &:hover {
-      background-color: #ccc;                     /* Change the background color on hover for disabled state */
+    &, &:hover {
+      background-color: var(--light-grey);        /* Change the background color on hover for disabled state */
     }
   }
 

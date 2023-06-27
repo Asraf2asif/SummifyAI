@@ -1,0 +1,130 @@
+
+/* Style sections within the main section */
+.chat-container {
+  padding: 15px;
+  & .chat-message {
+    margin: 15px 0;
+
+    &.chatbot, &.user{
+      & p { 
+        display: inline-block;
+        padding: 10px 15px;
+        font-size: .84em;
+        transition: width 0.2s ease-in-out 0s;
+      }
+    }
+
+    &.chatbot{
+      display: flex;
+      margin-right: 5px;
+
+      & img {
+        width: 23px;
+        height: 23px;
+        border-radius: 50%;
+        border: 1px solid #919cab;
+        margin-right: 8px;
+      }
+
+      & p { 
+        border-radius: 5px 20px 20px;
+        background-color: rgb(241, 245, 249);
+        color: rgb(0, 0, 0);
+      }
+    }
+
+    &.user{   
+      display: flex;
+      justify-content: flex-end;
+      margin-left: 5px;
+
+      & img {
+        height: 20px;
+        padding-right: 5px;
+      }
+
+      & p { 
+        border-radius: 20px 5px 20px 20px;
+        background-color: rgb(0, 0, 0);
+        color: rgb(255, 255, 255);
+      }
+    }
+  }
+}
+
+
+/* Style the setup inner container */
+.setup-inner {
+  display: flex;                                        /* Display the setup inner container as a flex container */
+  justify-content: space-around;                        /* Distribute the items evenly along the horizontal axis */
+  padding: 1.5em 0.5em;                                 /* Add padding to the setup inner container */
+  min-height: 234px;                                    /* Set the minimum height of the setup inner container */
+
+  & > img {
+    width: 40%;                                          /* Set the width of the image */
+    filter: drop-shadow(3px 2px 3px var(--medium-dark)); /* Add a drop shadow to the image */
+    align-self: center;                                  /* Center align the image vertically */
+  }
+}
+
+/* Style the setup input container */
+.setup-input-container {
+  min-height: 50px;                                     /* Set the minimum height of the setup input container */
+  padding-bottom: 0px;
+
+  /* Apply different styling for larger mobile devices and above */
+  @media (width >= 380px) {
+    padding-top: 0;                                     /* Remove top padding for larger devices */
+  }
+}
+
+/* Style the speech bubble for AI response */
+.speech-bubble-ai {
+  min-width: 200px;                                     /* Set the minimum width of the speech bubble */
+  min-height: 120px;                                    /* Set the minimum height of the speech bubble */
+  border-radius: var(--border-rad-lg);                  /* Set the border radius using a CSS variable */
+  position: relative;                                   /* Set the position to relative */
+  margin: 0;                                            /* Remove margin */
+  background-color: var(--white);                       /* Set the background color using a CSS variable */
+  display: flex;                                        /* Display the speech bubble as a flex container */
+  align-self: flex-start;                               /* Align the speech bubble to the left */
+  align-items: center;                                  /* Center align the items vertically within the speech bubble */
+
+  /* Style the text within the speech bubble */
+  & > p {
+    padding: 15px;                                      /* Add padding to the text */
+    color: var(--dark);                                 /* Set the text color using a CSS variable */
+    font-size: 85%;                                    /* Set the font size for the text */
+
+    /* Apply different styling for larger mobile devices and above */
+    @media (width >= 380px) {
+      font-size: 100%;                                  /* Set the font size to 100% for larger devices */
+    }
+  }
+}
+
+textarea {
+  background-color: var(--light-grey);                  /* Set the background color using a CSS variable */
+  padding: 10px 20px;                                       /* Add padding to the textarea */
+  border: none;                                         /* Remove the border */
+  @util border-left-radius(5000px);       /* Apply border-left-radius using a mixin */
+  @util border-right-radius(0);                         /* Apply border-right-radius using a mixin */
+  width: 100%;                                          /* Set the width to 100% */
+  resize: none;                                         /* Disable textarea resizing */
+  height: 50px;                                     /* Set the minimum height of the textarea */
+  /* box-sizing: border-box; */                         /* Uncomment this line to include the border in the box-sizing calculation */
+  font-family: "Poppins", sans-serif;                   /* Set the font family for the textarea */
+  font-size: .9em;
+
+  &::placeholder {
+    color: var(--medium-dark);                          /* Set the placeholder text color using a CSS variable */
+    font-size: 88%;                                     /* Set the font size for the placeholder text */
+    opacity: 0.8;                                       /* Set the opacity for the placeholder text */
+
+    /* Apply different styling for larger mobile devices and above */
+    @media (width >= 380px) {
+      font-size: 100%;                                  /* Set the font size to 100% for larger devices */
+      opacity: 0.8;                                     /* Set the opacity for the placeholder text */
+    }
+  }
+}

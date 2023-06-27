@@ -6,6 +6,8 @@ import {
   handleError,
 } from "../error/handleError";
 
+// Summarize the given text by extracting all the necessary information and ensuring that no important details are left out.
+
 import { fewShotPromptGen } from "./fewShotPromptGen";
 import { openai } from "../../openaiConfig";
 
@@ -46,7 +48,7 @@ export async function fetchBotReply({
     const response = await openai.createCompletion({
       model: "text-davinci-003",
       prompt: prompt ? prompt : fewShotPromptGen(dataArray, resType, outline), // Construct the prompt string
-      temperature: 1,
+      temperature: .5,
       max_tokens: max_tokens,
       top_p: 1,
       frequency_penalty: 0,
@@ -54,6 +56,7 @@ export async function fetchBotReply({
     });
 
     const { choices } = response.data;
+    console.log(choices)
     const respondedText = choices[0].text.trim();
 
     return respondedText;

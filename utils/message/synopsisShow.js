@@ -44,25 +44,18 @@ const showSynopsisGeneratedMessage = () => {
   return messageElement;
 };
 
-// Function to show a message for title generation
-const showTitleGenerationMessage = () => {
-  const messageElement = showMessage(
-    "✔️ Generating movie synopsis based on your concept..."
-  );
-  return messageElement;
-};
 
 // Function to generate the synopsis
-const generateSynopsis = async () => {
+const generateSynopsis = async (prompt) => {
   const { synopsisData } = data; // Get the synopsis data from the imported data
 
   const messageElement1 = showSynopsisGenerationMessage(); // Show the message indicating synopsis generation
 
   const synopsis = await fetchBotReply({
     dataArray: synopsisData,
-    resType: "synopsis",
-    outline: setupTextarea.value,
-    max_tokens: 700,
+    resType: "summary",
+    outline: prompt,
+    max_tokens: 2000,
     outputTextElement: outputText,
     outputContainerElement: outputContainer,
   }); // Fetch the synopsis
@@ -72,30 +65,6 @@ const generateSynopsis = async () => {
   return synopsis;
 };
 
-// Function to generate the movie title
-const generateMovieTitle = async (synopsis) => {
-  const messageElement2 = showSynopsisGeneratedMessage(); // Show the message indicating synopsis generation is complete
-
-  const movieTitle = await fetchBotReply({
-    prompt: `Generate a catchy movie title for this synopsis\n###${synopsis}`,
-    max_tokens: 700,
-    outputTextElement: outputTitle,
-    outputContainerElement: outputContainer,
-  }); // Fetch the movie title based on the synopsis
-
-  removeMessage(messageElement2); // Remove the message indicating synopsis generation is complete
-
-  return movieTitle;
-};
-
-// Function to show the final title generation message
-const showFinalTitleGenerationMessage = () => {
-  const messageElement3 = showTitleGenerationMessage(); // Show the final message indicating title generation
-
-  setTimeout(() => {
-    removeMessage(messageElement3); // Remove the final message after a short delay
-  }, 10);
-};
 
 // Main function to display the synopsis and movie title
 export async function synopsisShow() {
@@ -106,22 +75,13 @@ export async function synopsisShow() {
 
   outputContainer.style.display = "block"; // Show output container
 
-  const synopsis = await generateSynopsis(); // Generate the synopsis
+  const synopsis = await generateSynopsis(setupTextarea.value); // Generate the synopsis
 
   if (synopsis) {
-    const movieTitle = await generateMovieTitle(synopsis); // Generate the movie title based on the synopsis
-
-    if (movieTitle) {
-      showFinalTitleGenerationMessage(); // Show the final message indicating title generation is complete
-
-      outputTitle.style.display = "block"; // Show the output title
-      typeTextByChar(movieTitle, outputTitle); // Type the movie title character by character in the output title
-    }
-
-    typeTextByChar(synopsis, outputText, null, () => {
-      resetLoading(); // Reset the loading state
-      setupTextarea.value = ""; // Clear the setup textarea
-      setupTextarea.select(); // Select the setup textarea
-    }); // Type the synopsis character by character in the output text
+  typeTextByChar(synopsis, outputText, null, () => {
+    resetLoading(); // Reset the loading state
+    setupTextarea.value = ""; // Clear the setup textarea
+    setupTextarea.select(); // Select the setup textarea
+  }); // Type the synopsis character by character in the output text    
   }
 }

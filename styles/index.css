@@ -18,16 +18,16 @@
 @import "partials-index/typography.css";
 
 /* =================
-      Sections 
+      header 
      ================= */
 
-@import "partials-index/sections.css";
+@import "partials-index/header.css";
 
 /* =================
       Setup 
      ================= */
 
-@import "partials-index/setup.css";
+@import "partials-index/chat.css";
 
 /* =================
       Buttons & SVG 

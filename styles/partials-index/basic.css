@@ -11,24 +11,17 @@ body {
 
 body {
   font-family: "Poppins", Arial, sans-serif;               /* Set the font family for the body */
-  background-size: cover;                                  /* Scale the background image to cover the entire body */
-  background-repeat: repeat-y;                             /* Repeat the background image vertically */
-  background-image: url("../../images/moviepitchbg-dark.jpg");   /* Set the background image */
+  background-color: #2C3240;                               /* Set the background color */
   height: 100vh;                                           /* Set the height of the body to 100% of the viewport height */
   display: flex;                                           /* Display the body as a flex container */
   flex-direction: column;                                  /* Arrange items vertically within the body */
-  justify-content: space-between;                          /* Add space between the items vertically */
   position: relative;                                      /* Set the position to relative */
+  padding: 15px;
+  max-width: 650px;
+/*  justify-content: center;*/
+  margin: 15px auto;
 }
 
-/* Create an overlay element for the page */
-
-.overlay {
-  position: absolute;                                      /* Position the overlay element absolutely */
-  top: 0;                                                  /* Place the overlay at the top */
-  left: 0;                                                 /* Place the overlay at the left */
-  width: 100%;                                             /* Set the width of the overlay to 100% */
-  height: 100%;                                            /* Set the height of the overlay to 100% */
-  background-color: rgba(0, 0, 0, 0.5);                    /* Set the background color with transparency */
-  z-index: -1;                                             /* Set a negative z-index to place it behind other elements */
+main {
+    background-color: var(--white);                    /* Set the background color using a CSS variable */  
 }

@@ -1,10 +1,12 @@
 footer {
-  background-color: var(--dark);          /* Set the background color using a CSS variable */
+  background-color: var(--light);          /* Set the background color using a CSS variable */
   padding: 0.8em;                         /* Add padding to the footer */
   font-size: 0.7em;                       /* Set the font size for the footer */
   text-align: center;                     /* Center align the text in the footer */
+  @util border-bottom-radius(var(--border-rad-lg));       /* Apply border-bottom-radius using a mixin */
+  padding: 15px;
+  &, & a {
 
-  &, a {
-    color: var(--light);                    /* Set the text color using a CSS variable */
+  color: var(--medium-dark);
   }
 }
