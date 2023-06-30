@@ -7,4 +7,10 @@
   --medium-dark: #777;    /* Medium dark gray color */
   --dark: #242526;        /* Dark gray color */
   --border-rad-lg: 15px;  /* Large border radius value */
+
+  --header-bg-color: #0a192f;
+  --logo-color: #ba68c8;
+  --button-color: #552a69;
+  --button-color-unfocus: #6f7278;
+  --main-bg-color: #f1f5f9;
 }

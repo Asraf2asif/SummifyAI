@@ -19,12 +19,12 @@ body {
   padding: 15px;
   max-width: 600px;
   margin: 15px auto;
+  justify-content: center;
 }
 
 main {
-  background-color: var(--white);                    /* Set the background color using a CSS variable */  
+  background-color: var(--main-bg-color);                    /* Set the background color using a CSS variable */  
   padding: 15px;
-   padding-bottom: 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

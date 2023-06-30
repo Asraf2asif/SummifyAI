@@ -52,7 +52,7 @@ export function typeTextByChar(text = "", element, speed = 10) {
  * Scrolls the page to bring the specified element into view.
  * @param {HTMLElement} element - The target HTML element to scroll to.
  */
-function scrollToElement(element) {
+export function scrollToElement(element) {
   try {
     // Check if the element parameter is a valid HTML element
     validateHtmlElementParameter(element, "element");

@@ -56,7 +56,6 @@ export async function fetchBotReply({
     });
 
     const { choices } = response.data;
-    console.log(choices)
     const respondedText = choices[0].text.trim();
 
     return respondedText;

@@ -28,27 +28,30 @@
 				<img src="./images/logo-dark.png" alt="SummifyAI logo"/>
 			</a>
 			<p>
-				<a href="/"><span>Summify </span></a>
+				<a href="/"><span class="logo">Summify </span></a>
 				Contents Summarizer
 			</p>
 		</header>
 
 		<main>
 			<div class="chat-container">
-				<div class="chat-message chatbot">
-					<img
-						src="./images/logo-gray.png"
-						alt="SummifyAI logo" class="logo"
-					/>
-					<p id="init-chat-msg">Welcome.</p>
-				</div>
+			  <div class="chat-message chatbot">
+			    <img src="./images/logo-gray.png" alt="SummifyAI logo" class="logo" />
+			    <div class="message-content">
+			      <p id="init-chat-msg">Welcome.</p>
+			    </div>
+			  </div>
+			</div>
+
 			</div>
 
 			<div class="chat-input">
 				<textarea
 					id="input-box"
 					placeholder="Enter your text..."
+					maxlength="2000"
 				></textarea>
+				<div id="charCount" class="charCount"></div>
 				<button
 					type="submit"
 					class="send-btn"
@@ -76,9 +79,9 @@
 				<a href="https://github.com/Asraf2asif" target="_blank">asraf2asif</a>.
 			</p>
 		</footer>
-
 		<!-- JavaScript -->
 		<script type="module" src="index.js"></script>
 	</body>
 </html>
 <!-- https://www.iconfinder.com/search?q=filter&price=free&style=outline -->
+

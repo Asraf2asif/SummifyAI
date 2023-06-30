@@ -1,42 +1,79 @@
 import {
   validateBtnParameter,
   validateInputParameter,
+  validateHtmlElementParameter,
   handleError,
 } from "../error/handleError";
+
+import { scrollToElement } from "..";
 
 /**
  * Toggles the disabled state and appearance of a button based on the input value.
  * @param {HTMLInputElement|HTMLTextAreaElement} input - The input or textarea element.
  * @param {HTMLButtonElement} btn - The button element.
  */
-export function toggleButton(input, btn) {
+export function toggleButton(btn, charCount, event) {
+
+  updateCharCount(charCount, event);
   try {
+    const {value:inputValue, style:inputStyle} = event.target;
     // Validate the input parameters
-    validateElements(input, btn);
+    validateElements(event.target, btn);
 
-    
-    btn.disabled = input.value.trim() === '';
+    scrollToElement(event.target);
 
-    if(input.value.trim() !== ''){
-      input.style.height = 'auto'; // Reset input height
-      
-      if(input.scrollHeight<500){
-        input.style.height = `${input.scrollHeight}px`; // Adjust input height based on content
-        input.style.overflow = "hidden";
-      }else{
-        input.style.height = "500px"; // Adjust input height based on content
-        input.style.overflow = "auto"; 
+    btn.disabled = inputValue.trim() === '';
+
+    if (inputValue !== '') {
+      resetInputHeight(inputStyle);
+
+      if (event.target.scrollHeight < 300) {
+        setInputHeight(inputStyle, event.target.scrollHeight, 'hidden');
+      } else {
+        setInputHeight(inputStyle,300, 'auto');
       }
-    }else{
-      input.style.height = '40px'; // Reset input height
-      input.style.overflow = "hidden";
+    } else {
+      setInputHeight(inputStyle, 40, 'hidden');
     }
+  } catch (error) {
+    // Handle errors
+    handleError(error);
+  }
+}  
 
+function resetInputHeight(style) {
+  style.height = 'auto';
+}
+
+function setInputHeight(style, height, overflow) {
+  style.height = `${height}px`;
+  style.overflowY = overflow;
+}
+
+export function updateCharCount(charCount, event) {
+  try {
+    const { value: inputValue } = event.target;
+    const maxLength = event.target.getAttribute('maxlength');
+
+    // Validate the input parameters
+    validateInputParameter(event.target, "input");
+    validateHtmlElementParameter(charCount, "charCount");
+
+    if (inputValue.length === 0) {
+      charCount.textContent = ``;
+    } else if (inputValue.length >= maxLength) {
+      charCount.classList.add('exceeded');
+      charCount.textContent = `Input limit at maximum. Cannot go higher than ${maxLength} characters`;
+    } else {
+      charCount.classList.remove('exceeded');
+      charCount.textContent = `${inputValue.length} / ${maxLength}`;
+    }
   } catch (error) {
     // Handle errors
     handleError(error);
   }
 }
+
 
 /**
  * Validates the input and button elements.
