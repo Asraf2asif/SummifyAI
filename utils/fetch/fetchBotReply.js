@@ -28,7 +28,7 @@ export async function fetchBotReply({
   resType = null,
   outline = null,
   prompt = null,
-  max_tokens = 100,
+  max_tokens = 1, 
   outputTextElement = null,
   outputContainerElement = null,
 }) {
@@ -103,3 +103,5 @@ function validateParameters(
   );
   validateNumberParameter(max_tokens, "max tokens");
 }
+
+// max_tokens, 100

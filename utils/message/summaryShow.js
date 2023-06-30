@@ -100,7 +100,7 @@ const generateSummary = async (prompt) => {
     dataArray: synopsisData,
     resType: "summary",
     outline: prompt,
-    max_tokens: 2000,
+    max_tokens: 9,
     outputTextElement: outputText,
     outputContainerElement: outputContainer,
   }); // Fetch the synopsis
@@ -127,3 +127,5 @@ export async function summaryShow(input, btn) {
     }
   },false);
 }
+
+// max_tokens, 1500
