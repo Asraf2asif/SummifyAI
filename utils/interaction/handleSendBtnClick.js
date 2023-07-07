@@ -1,5 +1,6 @@
 import { summaryShow } from "../message/summaryShow";
 import { typeTextByChar } from "../ui/typeTextByChar";
+const chatContainer = document.querySelector('.chat-container');
 
 /**
  * Handles the click event of the send button.
@@ -8,7 +9,7 @@ import { typeTextByChar } from "../ui/typeTextByChar";
  */
 export async function handleSendBtnClick(input, btn) {
   if (input.value.trim() !== '') {
-    await summaryShow(input, btn); // Display the synopsis
+    await summaryShow(input, chatContainer); // Display the synopsis
   } else {
     // typeTextByChar("Please provide some concept...", movieBossText); // Display a message asking for a concept
   }

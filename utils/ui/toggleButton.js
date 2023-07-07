@@ -60,7 +60,7 @@ export function updateCharCount(charCount, event) {
     validateHtmlElementParameter(charCount, "charCount");
 
     if (inputValue.length === 0) {
-      charCount.textContent = ``;
+      charCount.textContent = "Powered by OpenAI GPT3";
     } else if (inputValue.length >= maxLength) {
       charCount.classList.add('exceeded');
       charCount.textContent = `Input limit at maximum. Cannot go higher than ${maxLength} characters`;

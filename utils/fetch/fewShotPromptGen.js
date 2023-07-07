@@ -36,7 +36,6 @@ export function fewShotPromptGen(dataArray, resType, outline) {
     }
 
     promptStr += `###\narticle: ${outline}\n${resType}: `;
-
     return promptStr;
   } catch (error) {
     // Handle errors

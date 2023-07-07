@@ -1,7 +1,8 @@
 
 /* Style sections within the main section */
 .chat-container {
-  padding-bottom: 25px;
+  padding-bottom: 35px;
+  z-index: 1;
 
   & .chat-message {
     margin: 15px 0;
@@ -34,8 +35,9 @@
       }
 
       & .logo {
+        border: 1px solid rgb(112 122 142 / 67%);
         border-radius: 50%;
-        border: 1px solid rgb(113 123 143 / 70%);
+        background: hsla(0,0%,100%,.59);
       }
 
       & .loading {
@@ -50,6 +52,8 @@
         flex-direction: column;
         align-items: flex-end;
         box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+        margin-right: 10px;
+        overflow: hidden;
 
         & p {          
           color: #000;
@@ -110,8 +114,55 @@
         max-height: 500px;
         overflow-y: auto;
         overflow-x: hidden;
+        margin-left: 50px;
 
         & p {
+        }
+      }
+    }
+  }
+
+  & .features {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 15px;
+
+    & .feature {
+      border-radius: 100000px;
+      margin: 8px 13px;
+      padding-right: 13px;
+      padding-left: 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s ease-in-out;
+      background: #fafcff;
+
+      &:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      & p {
+        font-size: .82em;
+        color: #313030;
+        display: flex;
+        align-items: center;
+
+        & i {
+          background: hsla(0,0%,100%,.59);
+          border: 1px solid #bdc1ca;
+          border-radius: 50%;
+          color: #667186;
+          font-size: .9em;
+          margin-right: 10px;
+          padding: 9px;
+        }
+
+        & i.size-adjust {
+          font-size: 0.8em;
+          padding: 8px;
         }
       }
     }
@@ -119,10 +170,9 @@
 }
 
 .chat-input {
-  margin: 0 auto;
-    max-width: 400px;
-    position: relative;
-    min-width: 90%;
+  position: relative;
+  z-index: 1;
+  margin: 0 13px 50px;
 
   & textarea {
     min-height: 30px;
@@ -167,7 +217,7 @@
     position: absolute;
     font-size: .7em;
     color: gray;
-    right: 0;
+    right: 10px;
 
     &.exceeded {
       color: gray;
@@ -191,6 +241,14 @@
       color: #999;                                  /* Set the text color for disabled state */
       cursor: not-allowed;
     }
+  }
+
+  & img.loading {
+    bottom: -12px;
+    margin: 0 auto;
+    position: absolute;
+    left: 40%;
+    transform: translateX(-50%);
   }
 }
 

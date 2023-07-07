@@ -22,63 +22,78 @@
 		<link rel="stylesheet" href="styles/index.css" />
 	</head>
 	<body>
-		<!-- Header -->
-		<header>
-			<a href="/">
-				<img src="./images/logo-dark.png" alt="SummifyAI logo"/>
-			</a>
-			<p>
-				<a href="/"><span class="logo">Summify </span></a>
-				Contents Summarizer
-			</p>
-		</header>
+		<div class="container">
+			<!-- Header -->
+			<header>
+				<a href="/">
+					<img src="./images/logo-dark.png" alt="SummifyAI logo"/>
+				</a>
+				<p>
+					<a href="/"><span class="logo">Summify </span></a>
+					Contents Summarizer
+				</p>
+			</header>
 
-		<main>
-			<div class="chat-container">
-			  <div class="chat-message chatbot">
-			    <img src="./images/logo-gray.png" alt="SummifyAI logo" class="logo" />
-			    <div class="message-content">
-			      <p id="init-chat-msg">Welcome.</p>
-			    </div>
-			  </div>
-			</div>
+			<main>
+				<div class="chat-container">
+				  <div class="chat-message chatbot">
+				    <img src="./images/logo-gray.png" alt="SummifyAI logo" class="logo" />
+				    <div class="message-content">
+				      <p id="init-chat-msg">Welcome to Summify</p>
+				    </div>
+				  </div>
+				  <div class="features" id="features">
+				  	<div class="feature">
+				  		<p><i class="fa-solid fa-check size-adjust"></i>Summarize your Text</p>
+				  	</div>
+				  	<div class="feature">
+				  		<p><i class="fa-regular fa-clipboard"></i> Copy to Clipboard</p>
+				  	</div>
+				  	<div class="feature">
+				  		<p><i class="fa-regular fa-floppy-disk"></i> Save as Text File</p>				  		
+				  	</div>
+				  	<div class="feature">
+				  		<p><i class="fa-solid fa-repeat size-adjust"></i> Redo Summary</p>  		
+				  	</div>
+				  </div>
+					<div class="overlay"></div>
+				</div>
 
-			</div>
+				<div class="chat-input">
+					<textarea
+						id="input-box"
+						placeholder="Enter your text..."
+						maxlength="2000"
+					></textarea>
+					<div id="charCount" class="charCount"></div>
+					<button
+						type="submit"
+						class="send-btn"
+						id="send-btn"
+						aria-label="Send"
+						disabled
+					>
+						<i class="fas fa-paper-plane"></i>
+					</button>
+					<img
+						src="images/loading.svg"
+						class="loading"
+						id="loading"
+						style="display: none"
+						alt="Loading image"
+					/>
+				</div>
 
-			<div class="chat-input">
-				<textarea
-					id="input-box"
-					placeholder="Enter your text..."
-					maxlength="2000"
-				></textarea>
-				<div id="charCount" class="charCount"></div>
-				<button
-					type="submit"
-					class="send-btn"
-					id="send-btn"
-					aria-label="Send"
-					disabled
-				>
-					<i class="fas fa-paper-plane"></i>
-				</button>
-			</div>
-
-			<img
-				src="images/loading.svg"
-				class="loading"
-				id="loading"
-				style="display: none"
-				alt="Loading image"
-			/>
-		</main>
-
-		<!-- Footer -->
-		<footer>
-			<p>
-				&copy; <span id="currentYear"></span> SummifyAI. Created by
-				<a href="https://github.com/Asraf2asif" target="_blank">asraf2asif</a>.
-			</p>
-		</footer>
+				<footer>
+					<p>
+						&copy; <span id="currentYear"></span> SummifyAI. Created by
+						<a href="https://github.com/Asraf2asif" target="_blank">asraf2asif</a>.
+					</p>
+				</footer>
+			</main>
+			<input type="text" id="last-prompt" style="display: none;">
+			<!-- Footer -->
+		</div>
 		<!-- JavaScript -->
 		<script type="module" src="index.js"></script>
 	</body>

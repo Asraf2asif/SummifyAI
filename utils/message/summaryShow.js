@@ -15,6 +15,8 @@ const inputContainer = document.getElementById("input-container"); // Input cont
 const movieBossText = document.getElementById("movie-boss-text"); // Movie boss text element
 const inputText = document.getElementById("input-text"); // Input Text
 
+const lastPrompt = document.getElementById("last-prompt");
+
 /**
  * Create an image element with the specified source, class name, and alt text.
  *
@@ -50,7 +52,7 @@ function createChatContainer(messageType) {
   return container;
 }
 
-function createButtons(element) {
+function createButtons(element, chatContainer) {
   // Create the buttons container element
   const buttonsContainer = document.createElement('div');
   buttonsContainer.classList.add('buttons');
@@ -59,7 +61,7 @@ function createButtons(element) {
   const buttonData = [
     { class: 'copy-button', iconClass: 'fa-regular fa-clipboard', text: 'Copy', handler: handleCopyButtonClick },
     { class: 'download-button', iconClass: 'fa-regular fa-floppy-disk', text: 'Save', handler: handleDownloadButtonClick },
-    { class: 'repeat-button', iconClass: 'fa-solid fa-repeat', text: 'Redo', handler: handleRepeatButtonClick }
+    { class: 'repeat-button', iconClass: 'fa-solid fa-repeat', text: 'Redo', handler: handleRepeatButtonClick.bind(null, chatContainer) }
   ];
 
   // Create buttons based on button data
@@ -105,18 +107,23 @@ function handleDownloadButtonClick(event) {
   const label = findUpperLabel(button, 'p', 'message-content');
 
   if (label) {
-    const { summary_footer } = data.summaryData[1];
+    let { summary_footer } = data;
+
+    // Replace the placeholders with the dynamic date and time strings
+    summary_footer = summary_footer.replace('{{date}}', generateDateString());
+    summary_footer = summary_footer.replace('{{time}}', generateTimeString());
 
     const text = label.textContent + "\n" + summary_footer;
 
     const brandMsg = "Summarized by SummifyAI";
 
-    downloadTextAsFile(text, `${brandMsg} on ${getFormattedDate("-")}`, () => {
+    downloadTextAsFile(text, `${brandMsg} on ${generateDateString()}, ${generateTimeString("-")}`, () => {
       // Update the button's innerHTML with the new icon and text
       button.innerHTML = `<i class="fa-solid fa-check"></i> Saved`;
 
       // Revert back to previous state after 2 seconds
       setTimeout(() => {
+        button.textContent = '';
         button.innerHTML = '<i class="fa-regular fa-floppy-disk"></i> Save';
       }, 2000);
     });
@@ -128,53 +135,81 @@ function handleDownloadButtonClick(event) {
 
 
 // Event listener for repeat button click
-function handleRepeatButtonClick() {
+async function handleRepeatButtonClick(chatContainer, event) {
   // Add your code to handle the repeat button click event
-  console.log('Repeat button clicked');
+  const label = findUpperLabel(event.target, '.user-prompt', 'message-content');
+  lastPrompt.value = label.textContent
+  // Update the button's innerHTML with the new icon and text
+  event.target.innerHTML = `<i class="fa-solid fa-check"></i> Retrying`;
+
+  await chatbotMsgShow(chatContainer, lastPrompt)
+  event.target.innerHTML = '<i class="fa-solid fa-repeat"></i> Redo';
 }
 
-function getFormattedDate(timeSeparator=":") {
-  try {
-    const currentDate = new Date();
-    const day = currentDate.getDate();
-    const monthNames = [
-      "January", "February", "March", "April", "May", "June",
-      "July", "August", "September", "October", "November", "December"
-    ];
-    const month = monthNames[currentDate.getMonth()];
-    const year = currentDate.getFullYear();
+// Function to get the month name from the month number
+function getMonthName(month) {
+  var monthNames = [
+    "January", "February", "March", "April", "May", "June", 
+    "July", "August", "September", "October", "November", "December"
+  ];
+  return monthNames[month];
+}
 
-    // Format the time (hour, minute, second, AM/PM) manually
-    const hours = currentDate.getHours();
-    const minutes = currentDate.getMinutes();
-    const seconds = currentDate.getSeconds();
-    const ampm = hours >= 12 ? 'PM' : 'AM';
-    const twelveHours = hours % 12 || 12;
-    const time = `${twelveHours.toString().padStart(2, '0')}${timeSeparator}${minutes.toString().padStart(2, '0')}${timeSeparator}${seconds.toString().padStart(2, '0')} ${ampm}`;
+// Function to add leading zeros to single-digit numbers
+function addLeadingZero(number) {
+  return number < 10 ? '0' + number : number;
+}
 
-    // Create the formatted date string
-    const formattedDate = `${day}th ${month}, ${year}, ${time}`;
+// Function to generate the date string
+function generateDateString() {
+  var currentDate = new Date();
+  var day = currentDate.getDate();
+  var daySuffix = getDaySuffix(day);
+  var month = currentDate.getMonth();
+  var year = currentDate.getFullYear();
+  return addLeadingZero(day) + daySuffix +' ' + getMonthName(month) + ', ' +  + year;
+}
 
-    return formattedDate;
-  } catch (error) {
-    console.error("Error occurred while formatting the date:", error);
-    return "Error occurred while formatting the date.";
+// Function to get the suffix for the day
+function getDaySuffix(day) {
+  if (day >= 11 && day <= 13) {
+    return 'th';
+  }
+  
+  var lastDigit = day % 10;
+  switch (lastDigit) {
+    case 1: return 'st';
+    case 2: return 'nd';
+    case 3: return 'rd';
+    default: return 'th';
   }
 }
 
+// Function to generate the time string
+function generateTimeString(separator=":") {
+  var currentDate = new Date();
+  var hours = currentDate.getHours();
+  var minutes = currentDate.getMinutes();
+  var seconds = currentDate.getSeconds();
+  var ampm = hours >= 12 ? 'PM' : 'AM';
+  hours = hours % 12;
+  hours = hours ? hours : 12; // convert 0 to 12
+  return addLeadingZero(hours) + separator + addLeadingZero(minutes) + separator + addLeadingZero(seconds) + ' ' + ampm;
+}
 
-/**
- * Add a chat message to the parent element based on the specified parameters.
- *
- * @param {HTMLElement} parentElement - The parent element to which the chat message will be added.
- * @param {string} message - The content of the chat message.
- * @param {string} messageType - The type of the chat message (e.g., 'user', 'chatbot').
- * @param {HTMLElement|null} containerToRemove - The container element to be removed from the parent element.
- * @param {Function|null} callback - The callback function to execute after adding the chat message.
- * @param {boolean} typeText - A flag indicating whether to type the message character by character.
- * @returns {Promise<HTMLDivElement>} - A promise that resolves to the created chat container element.
- */
-function addChatMessage(parentElement, message, messageType, containerToRemove = null, callback = null, typeText = true) {
+
+// Function to add a user message
+function addUserMessage(parentElement, message,containerToRemove = null, callback = null, typeText = false) {
+  return addChatMessage(parentElement, message, 'user', containerToRemove, callback, typeText);
+}
+
+// Function to add a chatbot message
+function addChatbotMessage(parentElement, message, containerToRemove = null, callback = null, typeText = true) {
+  return addChatMessage(parentElement, message, 'chatbot', containerToRemove, callback, typeText);
+}
+
+// The main function for adding chat messages (refactored)
+function addChatMessage(parentElement, message, messageType, containerToRemove = null, callback = null, typeText = false) {
   return new Promise((resolve) => {
     // If a container to remove is provided, remove it from the parent element.
     if (containerToRemove instanceof Element) {
@@ -184,9 +219,13 @@ function addChatMessage(parentElement, message, messageType, containerToRemove =
     const container = createChatContainer(messageType);
 
     if (message.trim() !== '') {
+      if (messageType === 'user') {
+        lastPrompt.value = message;
+      }
       // Create a message content
       const messageContent = document.createElement('div');
       messageContent.className = "message-content";
+      
       // Create a message element
       const paragraph = document.createElement('p');
 
@@ -204,13 +243,18 @@ function addChatMessage(parentElement, message, messageType, containerToRemove =
 
       // Append the message element to the container
       messageContent.appendChild(paragraph);
+
       if (messageType === 'chatbot') {
-        createButtons(messageContent)
+        createButtons(messageContent, parentElement);
+        const userPrompt = document.createElement('p');
+        userPrompt.className = "user-prompt"
+        userPrompt.style.display = "none"
+        userPrompt.textContent = lastPrompt.value
+        messageContent.appendChild(userPrompt);
       }
+
       // Append the message element to the container
       container.appendChild(messageContent);
-
-      
 
       if (!typeText && callback && typeof callback === 'function') {
         callback(); // Execute the callback function
@@ -231,6 +275,11 @@ function addChatMessage(parentElement, message, messageType, containerToRemove =
 
     // Append the container to the parent element.
     if (parentElement instanceof Element) {
+       // Get the number of child elements in the container
+      const childNumber = parentElement.childElementCount + 1;
+      
+      // Set the id of the messageContent using the child number
+      container.id = `message-${childNumber}`;
       parentElement.appendChild(container);
     } else {
       console.error('Invalid parent element provided.');
@@ -251,7 +300,7 @@ const generateSummary = async (prompt) => {
     dataArray: summaryData,
     resType: "summary",
     outline: prompt,
-    max_tokens: 9,
+    max_tokens: 1500,
     outputTextElement: outputText,
     outputContainerElement: outputContainer,
   }); // Fetch the summary
@@ -266,24 +315,25 @@ const generateSummary = async (prompt) => {
  * @param {HTMLButtonElement} btn - The button element triggering the summary show.
  * @returns {Promise<void>} - A promise that resolves after showing the summary.
  */
-export async function summaryShow(input, btn) {
+export async function summaryShow(input, chatContainer) {
   loadingState(); // Set loading state
 
-  const chatContainer = document.querySelector('.chat-container');
-  
-  // Add user input to the chat container
-  await addChatMessage(chatContainer, input.value, 'user', null, async () => {
-    // Rest of the code
-    const chatbotMsg = await addChatMessage(chatContainer, '', 'chatbot');
-    // const summary = await generateSummary(input.value);
-    const summary = "await generateSummary(input.value)";
-    if (summary && chatbotMsg) {
-      await addChatMessage(chatContainer, summary, 'chatbot', chatbotMsg, null);
+  await addUserMessage(chatContainer, input.value, null, async () => {
+    await chatbotMsgShow(chatContainer, input)
+  });
+}
+
+async function chatbotMsgShow(chatContainer, input){
+  // const chatbotMsg = await addChatbotMessage(chatContainer, '');
+  // const summary = input.value?input.value:input;
+  const summary = input.value? await generateSummary(input.value) : await generateSummary(input);
+  if (summary) {
+    await addChatbotMessage(chatContainer, summary, null, () => {
       resetLoading(); // Reset the loading state
-      input.value = ""; // Clear the setup input
+      // input.value = ""; // Clear the setup input
       input.select(); // Select the setup input
-    }
-  }, false);
+    });      
+  }
 }
 
 // max_tokens, 1500

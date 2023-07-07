@@ -15,8 +15,12 @@ const charCount = document.getElementById('charCount');
 // Display an initial message
 await initMsgShow();
 
+// Add dynamic copyright year
+const currentYear = new Date().getFullYear();
+document.getElementById("currentYear").textContent = currentYear;
+
 // Handle input selection when the page loads
-onloadSelectInput(inputBox);
+// onloadSelectInput(inputBox);
 
 // Add event listener for textarea input
 inputBox.addEventListener('keyup', toggleButton.bind(null, sendBtn, charCount)); // Enable or disable the send button based on textarea input
@@ -28,7 +32,4 @@ inputBox.addEventListener("keydown", handleTextareaKeydown);
 // Add event listener for send button click
 sendBtn.addEventListener("click", () => handleSendBtnClick(inputBox, sendBtn));
 
-// Add dynamic copyright year
-const currentYear = new Date().getFullYear();
-document.getElementById("currentYear").textContent = currentYear;
 

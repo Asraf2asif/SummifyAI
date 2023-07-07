@@ -2,11 +2,13 @@
 header {
   background-color: var(--header-bg-color);                   /* Set the background color using a CSS variable */
   @util border-top-radius(var(--border-rad-lg));       /* Apply border-top-radius using a mixin */
-  padding: 13px;
+  padding: 13px 15px;
   color: var(--light);                             /* Set the text color using a CSS variable */
   font-size: 1.2em;  
   display: flex;
   align-items: flex-start;
+  border: 1px solid rgb(241 244 249 / 50%);
+  border-bottom: none;
 
   & img {
     height: 26px;                                    /* Set the height of the image */

@@ -18,6 +18,8 @@ export function resetLoading() {
   // Enable the input and button elements
   bulkEnableElem(inputBox, sendBtn);
 
+  charCount.textContent = "Powered by OpenAI GPT3"
   // Select the input element
+  inputBox.value = ""
   inputBox.select();
 }
