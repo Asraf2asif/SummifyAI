@@ -6,7 +6,6 @@ Harnesses the power of OpenAI's to revolutionize the way you consume information
 https://github.com/Asraf2asif/SummifyAI/assets/42813817/7b0d9f02-5ab0-4c3f-a928-36eacd9cfcb5
 
 ### Screenshot
-![Summify -  Summarize with precision, understand with ease](https://github.com/Asraf2asif/SummifyAI/assets/42813817/7cd0d8a3-f4e4-48e8-ada1-536706975811)
 ![Summify -  Summarize with precision, understand with ease 2](https://github.com/Asraf2asif/SummifyAI/assets/42813817/588438ad-ded5-45fd-834e-f8fab1d41d00)
 
 ### Todo
