@@ -16,5 +16,4 @@ https://github.com/Asraf2asif/SummifyAI/assets/42813817/7b0d9f02-5ab0-4c3f-a928-
 - repeat not append to last but after the called container
 - input auto select after message display and after loading
 - save all chat or reset all chat functions
-- add nice assets
 - loading typing sound like social media
